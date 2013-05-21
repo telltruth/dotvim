@@ -13,3 +13,6 @@
 [submodule "bundle/a"]
 	path = bundle/a
 	url = https://github.com/vim-scripts/a.vim.git
+[submodule "bundle/comments"]
+	path = bundle/comments
+	url = https://github.com/vim-scripts/comments.vim.git

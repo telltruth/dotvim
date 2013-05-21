@@ -1,0 +1,3 @@
+[submodule "bundle/gsession"]
+	path = bundle/gsession
+	url = https://github.com/c9s/gsession.vim.git

@@ -6,3 +6,11 @@ Create symlinks:
 
     ln -s ~/.vim/vimrc ~/.vimrc
 
+Submodule:
+
+    git submodule update
+
+Condition treatment:
+
+    if git clone fail,
+    export GIT_SSL_NO_VERIFY=true 

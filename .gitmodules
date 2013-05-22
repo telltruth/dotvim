@@ -16,3 +16,6 @@
 [submodule "bundle/comments"]
 	path = bundle/comments
 	url = https://github.com/vim-scripts/comments.vim.git
+[submodule "bundle/cscope_maps"]
+	path = bundle/cscope_maps
+	url = https://github.com/chazy/cscope_maps.git

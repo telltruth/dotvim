@@ -1,4 +1,4 @@
-" LastModified: 2013-05-20 14:57:12
+" LastModified: 2013-05-22 15:23:53
 
 
 
@@ -74,32 +74,7 @@ nnoremap <silent> <F3> :lv /\<<c-r>=expand("<cword>")<cr>\>/j %<cr>:lw<cr>
 filetype on
 filetype plugin on
 
-if has("cscope")
-  set csprg=/usr/bin/cscope
-  set csto=1
-  set cst
-  set nocsverb
-  " add any database in current directory
-  if filereadable("cscope.out")
-    cs add cscope.out
-  endif
-  set csverb
-endif
-" [S] Find this C symbol
-nmap cs :cs find s
-" [G] Find this definition
-nmap cg :cs find g
-" [C] Find functions calling this function
-nmap cc :cs find c
-" [T] Find this text string
-nmap ct :cs find t
-" [E] Find this egreo pattern
-nmap ce :cs find e
-nmap cf :cs find f
-" [I] Find files #including this file
-nmap ci :cs find i ^=expand("")$
-" [D] Find functions called by this function
-nmap cd :cs find d
+
 
 nmap <silent> <F9> :TlistToggle<cr>
 "nmap <f12> :wincmd p<CR>

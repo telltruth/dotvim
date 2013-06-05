@@ -1,4 +1,4 @@
-" LastModified: 2013-05-22 15:23:53
+" LastModified: 2013-05-31 11:56:08
 
 
 
@@ -36,8 +36,8 @@ colorscheme ansi_blows
 "colorscheme desert
 set foldenable
 set foldmethod=manual
-nnoremap  @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')
-
+set foldlevelstart=99
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 
 syntax on

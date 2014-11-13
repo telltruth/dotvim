@@ -126,8 +126,6 @@ endfunction
 
 nmap <TAB> v>
 nmap <S-TAB> v<
-"vmap <TAB> >gv
-"vmap <S-TAB> <gv
 
 " use f3 to search
 nnoremap <silent> <F3> :lv /\<<c-r>=expand("<cword>")<cr>\>/j %<cr>:lw<cr>
@@ -143,11 +141,6 @@ let Tlist_Show_One_File = 1            "不同時顯示多個文件的tag，只�
 "let Tlist_Auto_Open = 1
 let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最後一個窗口，則退出vim
 "let Tlist_Use_Right_Window = 1         "在右側窗口中顯示taglist窗口
-
-
-
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 ":set cscopequickfix=s-,c-,d-,i-,t-,e-
 silent! nmap <C-p> :NERDTreeToggle<CR>
@@ -195,6 +188,30 @@ let g:sh_fold_enabled= 4    "(enable if/do/for folding)
 " keep last modified position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
+
+nmap <F10> :SrcExplToggleDown<CR>
+nmap <F7> :SrcExplToggle<CR>
+nmap <F8> :SrcExplRefresh<CR>
+let g:SrcExpl_winHeight = 8  
+let g:SrcExpl_winWidth = 80 
+let g:SrcExpl_refreshTime = 100 
+let g:SrcExpl_jumpKey = "<ENTER>" 
+let g:SrcExpl_gobackKey = "<SPACE>" 
+let g:SrcExpl_pluginList = [ 
+        \ "__Tag_List__", 
+        \ "_NERD_tree_" 
+    \ ] 
+let g:SrcExpl_searchLocalDef = 1 
+let g:SrcExpl_isUpdateTags = 0 
+let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
+"let g:SrcExpl_updateTagsKey = "<F12>" 
+let g:SrcExpl_prevDefKey = "<F3>" 
+let g:SrcExpl_nextDefKey = "<F4>" 
+
+noremap <silent> <C-h> <C-w><
+noremap <silent> <C-l> <C-w>>
+noremap <silent> <C-j> <C-w>+
+noremap <silent> <C-k> <C-w>-
 
 
 autocmd BufWritePre,FileWritePre [._]vimrc   ks|call LastModified()|'s

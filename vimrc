@@ -1,4 +1,4 @@
-" LastModified: 2013-05-31 11:56:08
+" LastModified: 2016-01-20 15:32:49
 
 
 
@@ -6,9 +6,9 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 
-"set autoindent
-"set smartindent
-"set cindent
+set autoindent
+set smartindent
+set cindent
 set ruler
 set showmode
 set shiftwidth=4
@@ -28,6 +28,8 @@ set noerrorbells
 set mouse=a
 set showmatch
 set nobackup
+set autoread
+au CursorHold * checktime
 
 "colorscheme 256-jungle
 "colorscheme molokai
@@ -127,6 +129,8 @@ endfunction
 nmap <TAB> v>
 nmap <S-TAB> v<
 
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
 " use f3 to search
 nnoremap <silent> <F3> :lv /\<<c-r>=expand("<cword>")<cr>\>/j %<cr>:lw<cr>
 
@@ -142,7 +146,6 @@ let Tlist_Show_One_File = 1            "不同時顯示多個文件的tag，只�
 let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最後一個窗口，則退出vim
 "let Tlist_Use_Right_Window = 1         "在右側窗口中顯示taglist窗口
 
-":set cscopequickfix=s-,c-,d-,i-,t-,e-
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F5> :NERDTreeFind<CR>
 let g:NERDTreeMapActivateNode="<F5>"

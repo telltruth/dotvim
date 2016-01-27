@@ -5,17 +5,27 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
+" 設置自動縮進：即每行的縮進值與上一行相等；使用 noautoindent 取消設置
 set autoindent
+" 智能縮進
 set smartindent
+" 設置 使用 C/C++ 語言的自動縮進方式
 set cindent
+"禁止循環查找
+"set nowrapscan
 set ruler
 set showmode
+" 設置（自動）縮進的空格數為4
 set shiftwidth=4
+" 設置（軟）製表符寬度為4
 set tabstop=4
+"在狀態欄顯示正在輸入的命令
+set showcmd
 set softtabstop=4
 set expandtab
+" 搜索的時候即時顯示結果
 set incsearch
+" 高亮搜索結果
 set hls
 set nocompatible
 set cursorline
@@ -26,9 +36,14 @@ set backspace=indent,eol,start
 set noerrorbells
 "set mouse=nv
 set mouse=a
+" 設置匹配模式，顯示匹配的括號
 set showmatch
 set nobackup
 set autoread
+" 設置歷史記錄為100條
+set history=100
+" 自动换行
+set wrap
 au CursorHold * checktime
 
 "colorscheme 256-jungle
@@ -36,8 +51,13 @@ au CursorHold * checktime
 colorscheme ansi_blows
 "colorscheme spiderhawk
 "colorscheme desert
+" 摺疊設置
 set foldenable
+" 用語法高亮來定義摺疊
+"set foldmethod=syntax
 set foldmethod=manual
+" 啟動vim時不要自動摺疊代碼
+set foldlevel=100
 set foldlevelstart=99
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
@@ -150,6 +170,13 @@ silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F5> :NERDTreeFind<CR>
 let g:NERDTreeMapActivateNode="<F5>"
 "let g:NERDTreeMapPreview="<F6>"
+let NERDTreeShowBookmarks=1
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.$','\~$']
+"let NERDTreeShowLineNumbers=1
+"let NERDTreeWinPos=1
+
 
 " vim status line
 set ls=2

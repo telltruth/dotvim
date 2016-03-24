@@ -1,4 +1,4 @@
-" LastModified: 2016-01-20 15:32:49
+" LastModified: 2016-03-24 17:23:53
 
 
 
@@ -40,6 +40,8 @@ set mouse=a
 set showmatch
 set nobackup
 set autoread
+set ttyfast
+set ttymouse=xterm2
 " 設置歷史記錄為100條
 set history=100
 " 自动换行
@@ -172,7 +174,7 @@ let g:NERDTreeMapActivateNode="<F5>"
 "let g:NERDTreeMapPreview="<F6>"
 let NERDTreeShowBookmarks=1
 let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 let NERDTreeIgnore=['\.$','\~$']
 "let NERDTreeShowLineNumbers=1
 "let NERDTreeWinPos=1
@@ -218,7 +220,6 @@ let g:sh_fold_enabled= 4    "(enable if/do/for folding)
 " keep last modified position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-
 nmap <F10> :SrcExplToggleDown<CR>
 nmap <F7> :SrcExplToggle<CR>
 nmap <F8> :SrcExplRefresh<CR>
@@ -243,6 +244,26 @@ noremap <silent> <C-l> <C-w>>
 noremap <silent> <C-j> <C-w>+
 noremap <silent> <C-k> <C-w>-
 
+" cscope
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 autocmd BufWritePre,FileWritePre [._]vimrc   ks|call LastModified()|'s
 fun LastModified()

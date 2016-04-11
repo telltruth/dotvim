@@ -1,32 +1,32 @@
-" LastModified: 2016-03-24 17:23:53
+" LastModified: 2016-04-06 15:43:15
 
 
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" 設置自動縮進：即每行的縮進值與上一行相等；使用 noautoindent 取消設置
+" auto indent 
 set autoindent
-" 智能縮進
+" snart indent
 set smartindent
-" 設置 使用 C/C++ 語言的自動縮進方式
+" c language indent
 set cindent
-"禁止循環查找
+" no wrap scan
 "set nowrapscan
 set ruler
 set showmode
-" 設置（自動）縮進的空格數為4
+" auto indent is 4
 set shiftwidth=4
-" 設置（軟）製表符寬度為4
 set tabstop=4
-"在狀態欄顯示正在輸入的命令
+" show command
 set showcmd
 set softtabstop=4
 set expandtab
-" 搜索的時候即時顯示結果
+" show search result
 set incsearch
-" 高亮搜索結果
+" highlight search
 set hls
+" no cpmpatible vi
 set nocompatible
 set cursorline
 set guifontset=8x16,kc15f,-*-16-*-big5-0
@@ -34,17 +34,17 @@ set t_Co=256
 set linebreak
 set backspace=indent,eol,start
 set noerrorbells
-"set mouse=nv
-set mouse=a
-" 設置匹配模式，顯示匹配的括號
+set mouse=nv
+"set mouse=a
+" show match 
 set showmatch
 set nobackup
 set autoread
+" Can manual adjust windows size
 set ttyfast
 set ttymouse=xterm2
-" 設置歷史記錄為100條
+" history 100 lines
 set history=100
-" 自动换行
 set wrap
 au CursorHold * checktime
 
@@ -53,12 +53,11 @@ au CursorHold * checktime
 colorscheme ansi_blows
 "colorscheme spiderhawk
 "colorscheme desert
-" 摺疊設置
+" fold
 set foldenable
-" 用語法高亮來定義摺疊
 "set foldmethod=syntax
 set foldmethod=manual
-" 啟動vim時不要自動摺疊代碼
+" start vim no fold 
 set foldlevel=100
 set foldlevelstart=99
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
@@ -163,10 +162,10 @@ filetype plugin on
 
 nmap <silent> <F9> :TlistToggle<cr>
 "nmap <f12> :wincmd p<CR>
-let Tlist_Show_One_File = 1            "不同時顯示多個文件的tag，只顯示當前文件的
+let Tlist_Show_One_File = 1
 "let Tlist_Auto_Open = 1
-let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最後一個窗口，則退出vim
-"let Tlist_Use_Right_Window = 1         "在右側窗口中顯示taglist窗口
+let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Use_Right_Window = 1
 
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F5> :NERDTreeFind<CR>
@@ -239,10 +238,10 @@ let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 let g:SrcExpl_prevDefKey = "<F3>" 
 let g:SrcExpl_nextDefKey = "<F4>" 
 
-noremap <silent> <C-h> <C-w><
-noremap <silent> <C-l> <C-w>>
-noremap <silent> <C-j> <C-w>+
-noremap <silent> <C-k> <C-w>-
+"noremap <silent> <C-h> <C-w><
+"noremap <silent> <C-l> <C-w>>
+"noremap <silent> <C-j> <C-w>+
+"noremap <silent> <C-k> <C-w>-
 
 " cscope
 if has("cscope")

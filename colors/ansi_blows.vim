@@ -4,7 +4,7 @@
 " License:     as-is
 
 set t_Co=256
-set bg=dark
+"set bg=dark
 
 " Remove all existing highlighting and set the defaults.
 hi clear

@@ -142,24 +142,24 @@ let s:boldWhite='#ffffff'
 exe 'hi Normal       guifg=' . s:white . ' guibg=' . s:black
 exe 'hi SpecialKey   guifg=' . s:boldBlue
 exe 'hi NonText      guifg=' . s:boldBlue . ' gui=none'
-exe 'hi Directory    guifg=' . s:boldCyan
+exe 'hi Directory    cterm=NONE ctermfg=yellow'
 exe 'hi ErrorMsg     guifg=' . s:boldWhite . ' guibg=' . s:red
 exe 'hi IncSearch    cterm=reverse gui=reverse'
-exe 'hi Search       guifg=bg guibg=' . s:brown
+exe 'hi Search       cterm=NONE ctermfg=black ctermbg=yellow'
 exe 'hi MoreMsg      guifg=' . s:boldGreen . ' gui=none'
 exe 'hi ModeMsg      guifg=' . s:boldWhite . ' gui=none'
-exe 'hi LineNr       guifg=' . s:yellow
+exe 'hi LineNr       guifg=' . s:red
 exe 'hi Question     guifg=' . s:boldGreen . ' gui=none'
 exe 'hi StatusLine   cterm=reverse gui=reverse'
 exe 'hi StatusLineNC cterm=reverse gui=reverse'
 exe 'hi VertSplit    cterm=reverse gui=reverse'
 exe 'hi Title        guifg=' . s:boldMagenta . ' gui=none'
-exe 'hi Visual       cterm=reverse gui=reverse guibg=bg'
+exe 'hi Visual       cterm=NONE guifg=' . s:boldWhite . ' ctermfg=black'
 exe 'hi VisualNOS    guifg=' . s:boldWhite . ' gui=underline'
 exe 'hi WarningMsg   guifg=' . s:boldRed
 exe 'hi WildMenu     ctermbg=3 guifg=bg guibg=' . s:brown
-exe 'hi Folded       ctermfg=3 ctermbg=7 guifg=' . s:brown . ' guibg=' . s:boldBlack
-exe 'hi FoldColumn   ctermfg=3 ctermbg=7 guifg=' . s:brown . ' guibg=' . s:boldBlack
+exe 'hi Folded       ctermfg=1 ctermbg=7 guifg=' . s:brown . ' guibg=' . s:boldBlack
+exe 'hi FoldColumn   ctermfg=1 ctermbg=7 guifg=' . s:brown . ' guibg=' . s:boldBlack
 exe 'hi DiffAdd      guibg=' . s:blue
 exe 'hi DiffChange   guibg=' . s:magenta
 exe 'hi DiffDelete   cterm=none guifg=' . s:blue . ' guibg=' . s:cyan . ' gui=none'
@@ -170,7 +170,7 @@ exe 'hi SpellCap     cterm=bold guifg=' . s:boldWhite . ' guisp=' . s:boldBlue .
 exe 'hi SpellRare    cterm=bold guifg=' . s:boldWhite . ' guisp=' . s:boldMagenta . ' gui=undercurl'
 exe 'hi SpellLocal   cterm=bold guifg=' . s:boldWhite . ' guisp=' . s:boldCyan . ' gui=undercurl'
 exe 'hi Pmenu        guibg=' . s:magenta
-exe 'hi PmenuSel     guibg=bg'
+exe 'hi PmenuSel     ctermfg=0'
 exe 'hi PmenuSbar    ctermfg=3 guifg=' . s:brown . ' guibg=fg'
 exe 'hi PmenuThumb   cterm=reverse gui=reverse'
 exe 'hi TabLine      cterm=underline guifg=fg guibg=bg gui=underline'
@@ -181,13 +181,13 @@ exe 'hi CursorLine   cterm=underline gui=underline guibg=bg'
 exe 'hi Cursor       cterm=reverse guifg=bg guibg=fg'
 exe 'hi lCursor      cterm=reverse guifg=bg guibg=fg'
 exe 'hi MatchParen   cterm=bold guifg=' . s:boldWhite . ' guibg=' . s:cyan
-exe 'hi Comment      ctermfg=2 guifg=' . s:boldCyan
-exe 'hi Constant     guifg=' . s:boldMagenta
+exe 'hi Comment      ctermfg=2'
+exe 'hi Constant     cterm=none ctermfg=red'
 exe 'hi Special      guifg=' . s:boldRed
 exe 'hi Identifier   cterm=bold guifg=' . s:boldCyan . ' gui=bold'
-exe 'hi Statement    guifg=' . s:yellow . ' gui=none'
+exe 'hi Statement    ctermfg=3'
 exe 'hi PreProc      guifg=' . s:boldBlue
-exe 'hi Type         ctermfg=cyan guifg=' . s:boldGreen . ' gui=none'
+exe 'hi Type         cterm=bold ctermfg=6'
 exe 'hi Underlined   cterm=bold,underline guifg=' . s:boldBlue . ' gui=underline'
 exe 'hi Ignore       guifg=bg'
 exe 'hi Error        guifg=' . s:boldWhite . ' guibg=' . s:boldRed

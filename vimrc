@@ -264,6 +264,27 @@ nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+set viminfo+=!
+" keep mark
+set viminfo='1000,f1
+
+" mark.vim
+"let g:mwDefaultHighlightingPalette='extended'
+let g:mwAutoLoadMarks = 1 
+let g:mwAutoSaveMarks = 1
+let g:mwDefaultHighlightingPalette='maximum'
+let g:mwIgnoreCase = 0
+nmap <Leader>1  <Plug>MarkSearchGroup1Next 
+nmap <Leader>2  <Plug>MarkSearchGroup2Next 
+nmap <Leader>3  <Plug>MarkSearchGroup3Next 
+nmap <Leader>4  <Plug>MarkSearchGroup4Next 
+nmap <Leader>5  <Plug>MarkSearchGroup5Next 
+nmap <Leader>Q  <Plug>MarkSearchGroup1Prev 
+nmap <Leader>W  <Plug>MarkSearchGroup2Prev 
+nmap <Leader>E  <Plug>MarkSearchGroup3Prev 
+nmap <Leader>R  <Plug>MarkSearchGroup4Prev 
+nmap <Leader>T  <Plug>MarkSearchGroup5Prev 
+
 autocmd BufWritePre,FileWritePre [._]vimrc   ks|call LastModified()|'s
 fun LastModified()
 

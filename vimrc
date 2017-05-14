@@ -439,7 +439,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " wildfire.vim
-map <SPACE> <Plug>(wildfire-fuel)
+map <C-O> <Plug>(wildfire-fuel)
 "vmap <S-SPACE> <Plug>(wildfire-water)
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 

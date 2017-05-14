@@ -1,9 +1,53 @@
 " LastModified: 2016-04-06 15:43:15
 
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'telltruth/nerdtree'
+"Plugin 'telltruth/taglist'
+Plugin 'telltruth/AutoComplPop'
+Plugin 'telltruth/snipMate'
+Plugin 'telltruth/a'
+Plugin 'telltruth/cscope_maps'
+Plugin 'telltruth/SrcExpl'
+Plugin 'telltruth/bufexplorer'
+Plugin 'telltruth/comments.vim'
 
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'tomasr/molokai'
+"Plugin 'vim-scripts/phd'
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'derekwyatt/vim-fswitch'
+Plugin 'kshenoy/vim-signature'
+"Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/indexer.tar.gz'
+Plugin 'vim-scripts/DfrankUtil'
+Plugin 'vim-scripts/vimprj'
+"Plugin 'mileszs/ack.vim'
+"Plugin 'rking/ag.vim'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/DrawIt'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'derekwyatt/vim-protodef'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'fholgado/minibufexpl.vim'
+Plugin 'gcmt/wildfire.vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'suan/vim-instant-markdown'
+"Plugin 'lilydjwg/fcitx.vim'
+"plugin 'jdevera/vim-cs-explorer'
+Plugin 'dotfiles/c.vim'
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call vundle#end()
+filetype plugin indent on
 
 " auto indent 
 set autoindent
@@ -29,6 +73,9 @@ set hls
 " no cpmpatible vi
 set nocompatible
 set cursorline
+if !&diff
+    set cursorcolumn
+endif
 set guifontset=8x16,kc15f,-*-16-*-big5-0
 set t_Co=256
 set linebreak
@@ -44,24 +91,34 @@ set autoread
 set ttyfast
 set ttymouse=xterm2
 " history 100 lines
-set history=100
+set history=1000
 set wrap
 au CursorHold * checktime
 
+set background=dark
 "colorscheme 256-jungle
-"colorscheme molokai
-colorscheme ansi_blows
+"colorscheme ansi_blows
+"colorscheme solarized
+colorscheme molokai
+"colorscheme phd
 "colorscheme spiderhawk
 "colorscheme desert
+if &diff
+    colorscheme ansi_blows
+endif
+
 " fold
 set foldenable
-"set foldmethod=syntax
-set foldmethod=manual
-" start vim no fold 
-set foldlevel=100
+set foldmethod=syntax
+set foldcolumn=0
+setlocal foldlevel=1
 set foldlevelstart=99
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+"set foldclose=all
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
+"highlight CursorLine cterm=none ctermbg=236
+"highlight CursorColumn cterm=none ctermbg=236
+"let g:Powerline_colorscheme='solarized256'
 
 syntax on
 syntax enable
@@ -72,7 +129,6 @@ syntax enable
 "highlight Comment ctermfg=darkcyan
 "highlight Search term=reverse ctermbg=4 ctermfg=7
 "highlight CursorLine cterm=none ctermbg=0
-"set background=dark
 
 " screen could use f1~f4
 if &term =~ '^screen'
@@ -158,17 +214,17 @@ nnoremap <silent> <F3> :lv /\<<c-r>=expand("<cword>")<cr>\>/j %<cr>:lw<cr>
 filetype on
 filetype plugin on
 
-
-
-nmap <silent> <F9> :TlistToggle<cr>
+" Taglist - OUT!
+"nmap <silent> <F9> :TlistToggle<cr>
 "nmap <f12> :wincmd p<CR>
-let Tlist_Show_One_File = 1
+"let Tlist_Show_One_File = 1
 "let Tlist_Auto_Open = 1
-let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Exit_OnlyWindow = 1
 "let Tlist_Use_Right_Window = 1
 
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F5> :NERDTreeFind<CR>
+"silent! map <F5> :NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode="<F5>"
 "let g:NERDTreeMapPreview="<F6>"
 let NERDTreeShowBookmarks=1
@@ -177,6 +233,11 @@ let NERDTreeShowHidden=0
 let NERDTreeIgnore=['\.$','\~$']
 "let NERDTreeShowLineNumbers=1
 "let NERDTreeWinPos=1
+"nmap <Leader>fl :NERDTreeToggle<CR>
+"let NERDTreeWinSize=22
+"let NERDTreeWinPos="right"
+"let NERDTreeMinimalUI=1
+"let NERDTreeAutoDeleteBuffer=1
 
 
 " vim status line
@@ -196,7 +257,6 @@ highlight User5 term=underline cterm=underline ctermfg=yellow
 "highlight User6 ctermfg=white
 
 
-
 "== a.vim ==
 nnoremap <silent> <F12> :A<CR>
 
@@ -206,7 +266,6 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
 
 " C
 autocmd FileType c set omnifunc=ccomplete#Complete
@@ -285,6 +344,112 @@ nmap <Leader>E  <Plug>MarkSearchGroup3Prev
 nmap <Leader>R  <Plug>MarkSearchGroup4Prev 
 nmap <Leader>T  <Plug>MarkSearchGroup5Prev 
 
+" vim-indent-guides
+nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+let g:indent_guides_enable_on_vim_startup=0
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+" tagbar
+nmap <silent><F9> :TagbarToggle<CR>
+let tagbar_left=1
+"nnoremap <Leader>tb :TagbarToggle<CR>
+let tagbar_width=32
+let g:tagbar_compact=1
+let g:tagbar_autofocus = 1
+let g:tagbar_ctags_bin='ctags'
+let g:tagbar_width=30
+let g:tagbar_sort=0
+"map <F3> :Tagbar<CR>
+"autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+let g:tagbar_type_cpp = {
+     \ 'ctagstype' : 'c++',
+     \ 'kinds'     : [
+         \ 'c:classes:0:1',
+         \ 'd:macros:0:1',
+         \ 'e:enumerators:0:0', 
+         \ 'f:functions:0:1',
+         \ 'g:enumeration:0:1',
+         \ 'l:local:0:1',
+         \ 'm:members:0:1',
+         \ 'n:namespaces:0:1',
+         \ 'p:functions_prototypes:0:1',
+         \ 's:structs:0:1',
+         \ 't:typedefs:0:1',
+         \ 'u:unions:0:1',
+         \ 'v:global:0:1',
+         \ 'x:external:0:1'
+     \ ],
+     \ 'sro'        : '::',
+     \ 'kind2scope' : {
+         \ 'g' : 'enum',
+         \ 'n' : 'namespace',
+         \ 'c' : 'class',
+         \ 's' : 'struct',
+         \ 'u' : 'union'
+     \ },
+     \ 'scope2kind' : {
+         \ 'enum'      : 'g',
+         \ 'namespace' : 'n',
+         \ 'class'     : 'c',
+         \ 'struct'    : 's',
+         \ 'union'     : 'u'
+     \ }
+\ }
+
+let g:disable_protodef_sorting=1
+
+" minibufexpl.vim
+"map <Leader>bl :MBEToggle<cr>
+"map <C-Tab> :MBEbn<cr>
+"map <C-S-Tab> :MBEbp<cr>
+
+"vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+
+" vim-easymotion
+let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+map <Leader><leader>. <Plug>(easymotion-repeat)
+
+" ctrlsf.vim
+"let g:ackprg = '/usr/local/bin/ag --nogroup --nocolor --column'
+let g:ctrlsf_ackprg='/usr/local/bin/ag' 
+nnoremap <Leader>sp :CtrlSF<CR>
+nnoremap <Leader>sq :CtrlSFQuickfix<CR>
+
+" vim-multiple-cursors
+let g:multi_cursor_next_key='<C-n>'
+"let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_next_key='<C-m>'
+"let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" wildfire.vim
+map <SPACE> <Plug>(wildfire-fuel)
+"vmap <S-SPACE> <Plug>(wildfire-water)
+let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
+
+" gundo.vim
+nnoremap <Leader>ud :GundoToggle<CR>
+
+" c.vim
+"let c_comment_strings=1
+"let c_no_if0=1
+
 autocmd BufWritePre,FileWritePre [._]vimrc   ks|call LastModified()|'s
 fun LastModified()
 
@@ -293,3 +458,4 @@ fun LastModified()
 
 endfun
 
+autocmd BufWritePost $MYVIMRC source $MYVIMRC

@@ -44,7 +44,7 @@ Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'suan/vim-instant-markdown'
 "Plugin 'lilydjwg/fcitx.vim'
 "plugin 'jdevera/vim-cs-explorer'
-Plugin 'dotfiles/c.vim'
+"Plugin 'dotfiles/c.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -95,7 +95,7 @@ set history=1000
 set wrap
 au CursorHold * checktime
 
-set background=dark
+"set background=dark
 "colorscheme 256-jungle
 "colorscheme ansi_blows
 "colorscheme solarized

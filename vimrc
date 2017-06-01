@@ -1,5 +1,33 @@
 " LastModified: 2016-04-06 15:43:15
 
+
+" <F1> - help
+" <F2> - paste mode toggle
+" <F3> - big search and content
+" \+sq - big search and list
+" <F4>
+" <F5> - NERDTreeFind
+" ctrl+p - NERDTreeToggle
+" <F6>
+" <F7> - SrcExplToggle
+" <F8> - SrcExplRefresh
+" <F9> - function list, order
+" <F10> - SrcExplToggleDown
+" <F11> - 
+" <F12> - switch .c and .h
+" ctrl+u - file search
+"        ctrl+t - open file with tab
+" ctrl+o - wildfire
+" :split - Up and down pages
+" \+m - mark
+" \+n - all marks disable
+"   \+1~5
+" \+i - IndentGuidesToggle
+" \+\+h~l. - easymotion
+" \+u+d - gundo
+
+
+
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -45,6 +73,7 @@ Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'lilydjwg/fcitx.vim'
 "plugin 'jdevera/vim-cs-explorer'
 "Plugin 'dotfiles/c.vim'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -202,14 +231,14 @@ function MyTabLine()
     return s
 endfunction
 
-
 nmap <TAB> v>
 nmap <S-TAB> v<
 
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
 " use f3 to search
-nnoremap <silent> <F3> :lv /\<<c-r>=expand("<cword>")<cr>\>/j %<cr>:lw<cr>
+" nnoremap <silent> <F3> :lv /\<<c-r>=expand("<cword>")<cr>\>/j %<cr>:lw<cr>
 
 filetype on
 filetype plugin on
@@ -271,9 +300,9 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 " BASH
 autocmd FileType shell set commentstring="#\ %s"
-let g:sh_fold_enabled= 1    "(enable function folding)
-let g:sh_fold_enabled= 2    "(enable heredoc folding)
-let g:sh_fold_enabled= 4    "(enable if/do/for folding)
+"let g:sh_fold_enabled= 1    "(enable function folding)
+"let g:sh_fold_enabled= 2    "(enable heredoc folding)
+"let g:sh_fold_enabled= 4    "(enable if/do/for folding)
 
 " keep last modified position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
@@ -338,11 +367,11 @@ nmap <Leader>2  <Plug>MarkSearchGroup2Next
 nmap <Leader>3  <Plug>MarkSearchGroup3Next 
 nmap <Leader>4  <Plug>MarkSearchGroup4Next 
 nmap <Leader>5  <Plug>MarkSearchGroup5Next 
-nmap <Leader>Q  <Plug>MarkSearchGroup1Prev 
-nmap <Leader>W  <Plug>MarkSearchGroup2Prev 
-nmap <Leader>E  <Plug>MarkSearchGroup3Prev 
-nmap <Leader>R  <Plug>MarkSearchGroup4Prev 
-nmap <Leader>T  <Plug>MarkSearchGroup5Prev 
+"nmap <Leader>Q  <Plug>MarkSearchGroup1Prev 
+"nmap <Leader>W  <Plug>MarkSearchGroup2Prev 
+"nmap <Leader>E  <Plug>MarkSearchGroup3Prev 
+"nmap <Leader>R  <Plug>MarkSearchGroup4Prev 
+"nmap <Leader>T  <Plug>MarkSearchGroup5Prev 
 
 " vim-indent-guides
 nmap <silent> <Leader>i <Plug>IndentGuidesToggle
@@ -426,7 +455,8 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 " ctrlsf.vim
 "let g:ackprg = '/usr/local/bin/ag --nogroup --nocolor --column'
 let g:ctrlsf_ackprg='/usr/local/bin/ag' 
-nnoremap <Leader>sp :CtrlSF<CR>
+"nnoremap <Leader>sp :CtrlSF<CR>
+nnoremap <silent> <F3> :CtrlSF<CR>
 nnoremap <Leader>sq :CtrlSFQuickfix<CR>
 
 " vim-multiple-cursors
@@ -449,6 +479,13 @@ nnoremap <Leader>ud :GundoToggle<CR>
 " c.vim
 "let c_comment_strings=1
 "let c_no_if0=1
+
+" ctrlp.vim
+let g:ctrlp_map = '<c-u>' 
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.symvers,*.order,*.o,*.ko,*.mod.c     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$' 
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
 autocmd BufWritePre,FileWritePre [._]vimrc   ks|call LastModified()|'s
 fun LastModified()

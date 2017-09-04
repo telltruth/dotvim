@@ -1,4 +1,4 @@
-" LastModified: 2016-04-06 15:43:15
+" LastModified: 2017-08-14 10:14:13
 
 
 " <F1> - help
@@ -33,7 +33,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'telltruth/nerdtree'
-"Plugin 'telltruth/taglist'
+Plugin 'telltruth/taglist'
 Plugin 'telltruth/AutoComplPop'
 Plugin 'telltruth/snipMate'
 Plugin 'telltruth/a'
@@ -51,7 +51,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'derekwyatt/vim-fswitch'
 Plugin 'kshenoy/vim-signature'
 "Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
@@ -124,6 +124,7 @@ set history=1000
 set wrap
 au CursorHold * checktime
 
+set clipboard=unnamed
 "set background=dark
 "colorscheme 256-jungle
 "colorscheme ansi_blows
@@ -244,12 +245,12 @@ filetype on
 filetype plugin on
 
 " Taglist - OUT!
-"nmap <silent> <F9> :TlistToggle<cr>
+nmap <silent> <F9> :TlistToggle<cr>
 "nmap <f12> :wincmd p<CR>
-"let Tlist_Show_One_File = 1
+let Tlist_Show_One_File = 1
 "let Tlist_Auto_Open = 1
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 0
 
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F5> :NERDTreeFind<CR>
@@ -383,15 +384,15 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " tagbar
-nmap <silent><F9> :TagbarToggle<CR>
-let tagbar_left=1
+"nmap <silent><F9> :TagbarToggle<CR>
+"let tagbar_left=1
 "nnoremap <Leader>tb :TagbarToggle<CR>
-let tagbar_width=32
-let g:tagbar_compact=1
-let g:tagbar_autofocus = 1
-let g:tagbar_ctags_bin='ctags'
-let g:tagbar_width=30
-let g:tagbar_sort=0
+"let tagbar_width=32
+"let g:tagbar_compact=1
+"let g:tagbar_autofocus = 1
+"let g:tagbar_ctags_bin='ctags'
+"let g:tagbar_width=30
+"let g:tagbar_sort=0
 "map <F3> :Tagbar<CR>
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 let g:tagbar_type_cpp = {
@@ -455,8 +456,8 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 " ctrlsf.vim
 "let g:ackprg = '/usr/local/bin/ag --nogroup --nocolor --column'
 let g:ctrlsf_ackprg='/usr/local/bin/ag' 
-"nnoremap <Leader>sp :CtrlSF<CR>
-nnoremap <silent> <F3> :CtrlSF<CR>
+nnoremap <Leader>sp :CtrlSF<CR>
+"nnoremap <silent> <F3> :CtrlSF<CR>
 nnoremap <Leader>sq :CtrlSFQuickfix<CR>
 
 " vim-multiple-cursors

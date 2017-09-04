@@ -74,6 +74,7 @@ Plugin 'Lokaltog/vim-easymotion'
 "plugin 'jdevera/vim-cs-explorer'
 "Plugin 'dotfiles/c.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on

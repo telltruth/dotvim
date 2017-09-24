@@ -1,4 +1,4 @@
-" LastModified: 2017-08-14 10:14:13
+" LastModified: 2017-09-24 14:45:53
 
 
 " <F1> - help
@@ -34,8 +34,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'telltruth/nerdtree'
 Plugin 'telltruth/taglist'
-Plugin 'telltruth/AutoComplPop'
-Plugin 'telltruth/snipMate'
+"Plugin 'telltruth/AutoComplPop'
+"Plugin 'telltruth/snipMate'
 Plugin 'telltruth/a'
 Plugin 'telltruth/cscope_maps'
 Plugin 'telltruth/SrcExpl'
@@ -61,8 +61,9 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/DrawIt'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'derekwyatt/vim-protodef'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'fholgado/minibufexpl.vim'
@@ -489,12 +490,22 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.symvers,*.order,*.o,*.ko,*.mod.c     
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$' 
 "let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
-autocmd BufWritePre,FileWritePre [._]vimrc   ks|call LastModified()|'s
-fun LastModified()
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
-    exe "1,$ s/^\"\ LastModified: .*/\"\ LastModified: " .
-        \ strftime("%F %T") . "/e"
+" ycm
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_confirm_extra_conf = 0
 
-endfun
 
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+
+
+

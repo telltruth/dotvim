@@ -141,7 +141,7 @@ endif
 
 " fold
 set foldenable
-set foldmethod=syntax
+"set foldmethod=syntax
 set foldcolumn=0
 setlocal foldlevel=1
 set foldlevelstart=99
@@ -170,6 +170,15 @@ if &term =~ '^screen'
     set t_k4=[14~
 endif
 
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
 
 " == snipmate ==
 let g:acp_behaviorSnipmateLength=1
